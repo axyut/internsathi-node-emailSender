@@ -3,13 +3,36 @@
 <div>
 	<form method="POST" action="/">
 		<div class="form-row">
-			<label for="email">Email:</label>
-			<input type="email" id="email" name="email" required />
+			<label for="email">From:</label>
+			<input
+				type="email"
+				id="email"
+				name="fromEmail"
+				placeholder="Your Email"
+				required
+			/>
 		</div>
 		<div class="form-row">
-			<label for="title">Title:</label>
-			<input type="text" id="title" name="title" required />
+			<label for="title">Title</label>
+			<input
+				type="text"
+				id="title"
+				name="title"
+				placeholder="Message Title"
+				required
+			/>
 		</div>
+		<div class="form-row">
+			<label for="email">To:</label>
+			<input
+				type="email"
+				id="email"
+				name="toEmail"
+				placeholder="Recepient's Email"
+				required
+			/>
+		</div>
+
 		<div class="form-row">
 			<label for="body">Body:</label>
 			<textarea id="body" name="body" required></textarea>

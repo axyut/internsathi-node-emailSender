@@ -8,13 +8,14 @@ router.get("/", (req, res) => {
 
 router.post("/", (req, res) => {
 	//Grab user input and send message with Html feature added
-	const { email, title, body } = req.body;
+	const { fromEmail, toEmail, title, body } = req.body;
 	const output = `
-        <h1>Blog Website Research</h1>
+        <h4>Mailing Message Service</h4>
+        <h2>${title}</h2>
         <p>Details</p>
         <ul>
-            <li> Title: ${title}</li>
-            <li> From: ${email}</li>
+            <li> From: ${fromEmail}</li>
+            <li> To: ${toEmail}</li>
         </ul>
         <h3>${body}</h3>
     `;
@@ -36,9 +37,9 @@ router.post("/", (req, res) => {
 			});
 
 			const mailOptions = {
-				from: `CoolGuy <${email}>`,
-				to: title,
-				subject: "Testing",
+				from: `CoolGuy <${fromEmail}>`,
+				to: toEmail,
+				subject: title,
 				html: output,
 			};
 
@@ -52,6 +53,7 @@ router.post("/", (req, res) => {
 			res.redirect("/failed");
 		}
 	}
+	sendMail();
 });
 
 router.get("/success", (req, res) => {
