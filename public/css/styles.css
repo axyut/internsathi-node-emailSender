@@ -13,7 +13,7 @@ form {
 label {
 	font-size: 20px;
 	font-weight: bold;
-
+	width: 15%;
 	background-color: #f1f1f1;
 	border: 1px solid #ccc;
 	border-radius: 4px;
@@ -22,7 +22,7 @@ label {
 
 input[type="text"],
 input[type="email"] {
-	width: 70%; /* Smaller width to fit side by side with label */
+	width: 85%; /* Smaller width to fit side by side with label */
 	padding: 12px 20px;
 	margin: 8px 0;
 	box-sizing: border-box;
@@ -31,7 +31,7 @@ input[type="email"] {
 }
 
 textarea {
-	width: 70%; /* Smaller width to fit side by side with label */
+	width: 85%; /* Smaller width to fit side by side with label */
 	height: 300px; /* Three times the size of the other fields */
 	padding: 12px 20px;
 	margin: 8px 0;
@@ -55,7 +55,7 @@ button:hover {
 	background-color: #037909;
 }
 
-/*Success and Failure Message Page*/
+/*        Success and Failure Message Page     */
 .success-container {
 	background-color: lightgreen;
 	font-family: sans-serif;
