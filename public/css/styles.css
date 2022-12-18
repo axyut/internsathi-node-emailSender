@@ -1,0 +1,56 @@
+/* Form styles */
+form {
+	width: 700px;
+	margin: 0 auto;
+	text-align: left;
+}
+
+.form-row {
+	display: flex; /* Display elements side by side */
+	align-items: center; /* Align elements vertically */
+}
+
+label {
+	font-size: 16px;
+	font-weight: bold;
+	text-transform: uppercase;
+	background-color: #f1f1f1;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	padding: 12px 20px;
+}
+
+input[type="text"],
+input[type="email"] {
+	width: 70%; /* Smaller width to fit side by side with label */
+	padding: 12px 20px;
+	margin: 8px 0;
+	box-sizing: border-box;
+	border: 2px solid #ccc;
+	border-radius: 4px;
+}
+
+textarea {
+	width: 70%; /* Smaller width to fit side by side with label */
+	height: 300px; /* Three times the size of the other fields */
+	padding: 12px 20px;
+	margin: 8px 0;
+	box-sizing: border-box;
+	border: 2px solid #ccc;
+	border-radius: 4px;
+}
+
+button {
+	width: 20%;
+	background-color: #049809;
+	color: white;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+button:hover {
+	background-color: #037909;
+}
