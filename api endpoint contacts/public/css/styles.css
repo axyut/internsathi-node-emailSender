@@ -1,0 +1,106 @@
+/* Form styles */
+/* form {
+	width: 700px;
+	margin: 0 auto;
+	text-align: left;
+} */
+
+.form-row {
+	display: flex; /* Display elements side by side */
+	align-items: center; /* Align elements vertically */
+	padding: 10px 16px;
+}
+
+.form-colm {
+	display: inline-flex;
+}
+
+label {
+	font-size: 15px;
+	width: 20%;
+	background-color: #f1f1f1;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	padding: 10px 16px;
+}
+
+input[type="number"] {
+	width: 150px; /* Smaller width to fit side by side with label */
+	padding: 12px 20px;
+	margin: 8px 0;
+	box-sizing: border-box;
+	border: 2px solid #ccc;
+	border-radius: 4px;
+}
+
+button {
+	width: 150px;
+	background-color: #049809;
+	color: white;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+button:hover {
+	background-color: #037909;
+}
+
+/*        Success and Failure Message Page     */
+.success-container {
+	background-color: lightgreen;
+	font-family: sans-serif;
+}
+.failed-container {
+	background-color: pink;
+	font-family: sans-serif;
+}
+
+.message {
+	text-align: center;
+	margin: 50px;
+	font-size: 2em;
+}
+.tick-icon {
+	font-size: 4em;
+	color: green;
+}
+.cross-icon {
+	font-size: 4em;
+	color: red;
+}
+
+.back-button {
+	text-align: center;
+	display: block;
+	width: fit-content;
+	margin: 20px auto;
+	padding: 10px 20px;
+	background-color: green;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	font-size: 1em;
+	cursor: pointer;
+}
+
+/*    Header   -   Nav Bar    */
+nav {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #333;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+nav a {
+	color: white;
+	text-decoration: none;
+	font-size: 16px;
+	padding: 15px;
+}
+nav a:hover {
+	color: rgb(204, 229, 231);
+}

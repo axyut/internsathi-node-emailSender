@@ -1,0 +1,23 @@
+<%- include('partials/header') %>
+
+<div class="form-row">
+	<a href="/sendOne/contacts"><button>Add a contact</button> </a>
+</div>
+<div class="form-row"></div>
+	<form method="POST" action="/sendMany/contacts">
+		
+			<label for="title">
+				<button type="submit">Add</button>
+				<input
+					type="number"
+					id="contacts"
+					name="contacts"
+					placeholder="Contacts"
+					required
+				/>
+			</label>
+		
+	</form>
+</div>
+
+<%- include('partials/footer') %>

@@ -1,0 +1,36 @@
+<%- include('partials/header') %> <% for(i=1; i<=contacts; i++){ %>
+<div class="form-colm">
+	<form method="POST" action="/add/user">
+		<div class="form-row">
+			<label for="fullname">Fullname: </label>
+			<input type="text" id="fullname" name="fullname" required />
+		</div>
+		<div class="form-row">
+			<label for="user">Number:</label>
+			<input type="text" id="number" name="number" required />
+		</div>
+		<div class="form-row">
+			<label for="email">Email:</label>
+			<input type="text" id="email" name="email" required />
+		</div>
+
+		<div class="form-row">
+			<label for="body">Description:</label>
+			<textarea id="body" name="body" required></textarea>
+		</div>
+		<div class="form-row">
+			<button class="form_submit" type="submit">Add</button>
+		</div>
+	</form>
+</div>
+<% } %>
+
+<!-- <script>
+	document
+		.getElementsByClassName("form_submit")
+		.addEventListener("click", function (event) {
+			event.preventDefault();
+		});
+</script> -->
+
+<%- include('partials/footer') %>
