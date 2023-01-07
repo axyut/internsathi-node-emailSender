@@ -52,4 +52,29 @@ router.post("/add/user", (req, res) => {
 	});
 });
 
+router.get("/contacts/:number", async (req, res) => {
+	try {
+		const number = req.params.number;
+		console.log(number);
+		const user = await users.findOne({ number });
+		if (!user) {
+			return res.json({ message: "User isn't in Contacts List!" });
+		}
+		console.log(user);
+		const { fullname, email, description } = user;
+		return res.json({ fullname, number, email, description });
+	} catch (error) {
+		console.log(error);
+	}
+});
+
+router.get("/all", async (req, res) => {
+	try {
+		const result = await users.find({});
+		res.json(result);
+	} catch (error) {
+		console.log(error);
+	}
+});
+
 module.exports = router;
