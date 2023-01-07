@@ -52,9 +52,9 @@ router.post("/add/user", (req, res) => {
 	});
 });
 
-router.get("/contacts/:number", async (req, res) => {
+router.post("/contacts", async (req, res) => {
 	try {
-		const number = req.params.number;
+		const number = req.body.number;
 
 		const user = await users.findOne({ number });
 		if (!user) {
