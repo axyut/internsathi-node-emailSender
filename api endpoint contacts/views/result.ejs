@@ -1,0 +1,35 @@
+<%- include('partials/header') %>
+
+
+<div>
+<form method="POST" action="/update/user"></form>
+    <div class="form-row">
+        <label for="fullname">Fullname:  </label>
+        <textarea id="body" name="fullname" required><%= fullname %></textarea>
+    </div>
+    <div class="form-row">
+        <label for="user">Number:</label>
+       <textarea id="body" name="number" required> <%= number %> </textarea>
+    </div>
+    <div class="form-row">
+        <label for="email">Email:</label>
+        <textarea id="body" name="email" required> <%= email %> </textarea>
+    </div>
+
+    <div class="form-row">
+        <label for="body">Description: </label>
+        <textarea id="body" name="body" required><%= body %> </textarea>
+    </div>
+    
+    <div class="form-colm">
+        <button id="update-btn" class="form_submit" type="submit">Update</button>
+    </div>
+    <div class="form-colm">
+        <button id="delete-btn" class="form_submit" type="submit">Delete</button>
+    </div>
+</form>
+</div>
+
+
+
+<%- include('partials/footer') %>

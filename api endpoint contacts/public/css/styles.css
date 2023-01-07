@@ -33,6 +33,18 @@ input[type="number"] {
 	border-radius: 4px;
 }
 
+textarea {
+	width: 200px; /* Smaller width to fit side by side with label */
+	padding: 2px 2px;
+	margin: 0;
+	box-sizing: border-box;
+	border: 2px solid #ccc;
+	border-radius: 4px;
+	font-weight: bold;
+	font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+		"Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
 button {
 	width: 150px;
 	background-color: #049809;
@@ -42,6 +54,18 @@ button {
 	border: none;
 	border-radius: 4px;
 	cursor: pointer;
+}
+#update-btn {
+	background-color: #e0a029;
+}
+#update-btn:hover {
+	background-color: #845702;
+}
+#delete-btn {
+	background-color: #f15e14;
+}
+#delete-btn:hover {
+	background-color: #640e05;
 }
 
 button:hover {
