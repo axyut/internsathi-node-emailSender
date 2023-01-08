@@ -69,12 +69,29 @@ router.post("/contacts", async (req, res) => {
 });
 
 router.get("/all", async (req, res) => {
+	const resultsPerPage = 4;
 	try {
+		let page = req.query.page ? Number(req.query.page) : 1;
 		const result = await users.find({});
-		res.json(result);
+		const numOfResults = result.length;
+		const numberOfPages = Math.ceil(numOfResults / resultsPerPage);
+
+		if (page > numberOfPages) {
+			res.redirect(`/blogs?page=${encodeURIComponent(numberOfPages)}`);
+		} else if (page < 1) {
+			res.redirect(`/blogs?page=${encodeURIComponent("1")}`);
+		}
+
+		const specificResult = await users.find({}).limit(resultsPerPage);
+
+		res.render("manyResult", { specificResult });
 	} catch (error) {
 		console.log(error);
 	}
+});
+
+router.get("*", (req, res) => {
+	res.send("error 404");
 });
 
 module.exports = router;

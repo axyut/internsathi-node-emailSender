@@ -1,7 +1,20 @@
 <%- include('partials/header') %>
 
-<div class="form-row">
-	<a href="/sendOne/contacts"><button>Add a contact</button> </a>
+<div class="form-row"></div>
+	<form method="POST" action="/contacts">
+		
+			<label for="number">
+				<button type="submit">Search</button>
+				<input
+					type="number"
+					id="contacts"
+					name="number"
+					placeholder="Number"
+					required
+				/>
+			</label>
+		
+	</form>
 </div>
 <div class="form-row"></div>
 	<form method="POST" action="/sendMany/contacts">
@@ -19,21 +32,12 @@
 		
 	</form>
 </div>
-<div class="form-row"></div>
-	<form method="POST" action="/contacts">
-		
-			<label for="number">
-				<button type="submit">Search</button>
-				<input
-					type="number"
-					id="contacts"
-					name="number"
-					placeholder="Number"
-					required
-				/>
-			</label>
-		
-	</form>
+
+<div class="form-row">
+	<a href="/sendOne/contacts"><button>Add a contact</button> </a>
+</div>
+<div class="form-row">
+	<a href="/all"><button>All Contacts</button> </a>
 </div>
 
 <%- include('partials/footer') %>
