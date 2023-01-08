@@ -1,37 +1,59 @@
 <%- include('partials/header') %>
 
-<% specificResult.forEach(result => {
-<div>
-<form method="POST" action="/update/user"></form>
-    <div class="form-row">
-        <label for="fullname">Fullname:  </label>
-        <textarea id="body" name="fullname" required><%= result.fullname %></textarea>
-    </div>
-    <div class="form-row">
-        <label for="user">Number:</label>
-       <textarea id="body" name="number" required> <%= result.number %> </textarea>
-    </div>
-    <div class="form-row">
-        <label for="email">Email:</label>
-        <textarea id="body" name="email" required> <%= result.email %> </textarea>
-    </div>
-
-    <div class="form-row">
-        <label for="body">Description: </label>
-        <textarea id="body" name="body" required><%= result.body %> </textarea>
-    </div>
-    
-    <div class="form-colm">
-        <button id="update-btn" class="form_submit" type="submit">Update</button>
-    </div>
-    <div class="form-colm">
-        <button id="delete-btn" class="form_submit" type="submit">Delete</button>
-    </div>
+<form action="/all" method="post">
+	<button type="submit" name="page" value="1">Next Page</button>
 </form>
+
+<% specificResult.forEach(result => { %>
+<div>
+	<form>
+		<div class="form-row">
+			<label for="fullname">Fullname: </label>
+			<textarea id="body" name="fullname" required>
+<%= result.fullname %></textarea
+			>
+		</div>
+		<div class="form-row">
+			<label for="user">Number:</label>
+			<span> <%= result.number %> </span>
+			<input type="hidden" name="number" value=" <%= result.number %> " />
+		</div>
+		<div class="form-row">
+			<label for="email">Email:</label>
+			<textarea id="body" name="email" required>
+ <%= result.email %> </textarea
+			>
+		</div>
+
+		<div class="form-row">
+			<label for="body">Description: </label>
+			<textarea id="body" name="body" required>
+<%= result.body %> </textarea
+			>
+		</div>
+
+		<div class="form-colm">
+			<button
+				id="update-btn"
+				class="form_submit"
+				type="submit"
+				formmethod="post"
+				formaction="/update/user"
+			>
+				Update
+			</button>
+		</div>
+		<div class="form-colm">
+			<button
+				id="delete-btn"
+				class="form_submit"
+				type="submit"
+				formmethod="post"
+				formaction="/delete/user"
+			>
+				Delete
+			</button>
+		</div>
+	</form>
 </div>
-<% }) %>
-
-
-
-
-<%- include('partials/footer') %>
+<% }) %> <%- include('partials/footer') %>

@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const alert = require("alert");
+
 const users = require("../models/model");
 
 router.get("/", (req, res) => {
@@ -40,7 +40,7 @@ router.post("/add/user", (req, res) => {
 			body,
 		});
 		newUser.save(newUser);
-		alert("added");
+
 		return res.json({
 			success: true,
 			message: `New User Added`,
@@ -69,20 +69,24 @@ router.post("/contacts", async (req, res) => {
 });
 
 router.get("/all", async (req, res) => {
-	const resultsPerPage = 4;
+	const resultsPerPage = 5;
 	try {
 		let page = req.query.page ? Number(req.query.page) : 1;
+
 		const result = await users.find({});
 		const numOfResults = result.length;
 		const numberOfPages = Math.ceil(numOfResults / resultsPerPage);
 
 		if (page > numberOfPages) {
-			res.redirect(`/blogs?page=${encodeURIComponent(numberOfPages)}`);
+			res.redirect(`/all?page=${encodeURIComponent(numberOfPages)}`);
 		} else if (page < 1) {
-			res.redirect(`/blogs?page=${encodeURIComponent("1")}`);
+			res.redirect(`/all?page=${encodeURIComponent("1")}`);
 		}
 
-		const specificResult = await users.find({}).limit(resultsPerPage);
+		const specificResult = await users
+			.find({})
+			.skip(resultsPerPage * (page - 1))
+			.limit(resultsPerPage);
 
 		res.render("manyResult", { specificResult });
 	} catch (error) {
@@ -90,8 +94,54 @@ router.get("/all", async (req, res) => {
 	}
 });
 
-router.get("*", (req, res) => {
-	res.send("error 404");
+router.post("/update/user", async (req, res) => {
+	const { fullname, number, email, body } = req.body;
+
+	try {
+		const update = await users.findOneAndUpdate(
+			{ number },
+			{ fullname, email, body }
+		);
+		if (update) {
+			return res.json({
+				success: true,
+				message: "User info updated",
+				fullname,
+				number,
+				email,
+				body,
+			});
+		}
+	} catch (error) {
+		console.log(error);
+	}
 });
+
+router.post("/delete/user", async (req, res) => {
+	const { fullname, number, email, body } = req.body;
+
+	try {
+		const del = await users.findOneAndDelete(
+			{ number },
+			{ fullname, email, body }
+		);
+		if (del) {
+			return res.json({
+				success: true,
+				message: "User Deleted",
+				fullname,
+				number,
+				email,
+				body,
+			});
+		}
+	} catch (error) {
+		console.log(error);
+	}
+});
+
+// router.get("*", (req, res) => {
+// 	res.send("error 404");
+// });
 
 module.exports = router;

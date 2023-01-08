@@ -34,7 +34,8 @@ input[type="number"] {
 }
 
 textarea,
-input {
+input,
+span {
 	width: 200px; /* Smaller width to fit side by side with label */
 	padding: 2px 2px;
 	margin: 0;
