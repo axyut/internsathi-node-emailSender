@@ -1,9 +1,27 @@
 <%- include('partials/header') %>
 
-<div class="form-row"></div>
-	<form method="POST" action="/contacts">
+<div class="form-colm">
+	
+	<form method="GET" action="/getToken">
+			
+			<label>Register</label>
+			<input
+				type="number"
+				id="contacts"
+				name="Number"
+				placeholder="Your Number"
+				required
+			/>
+			<button type="submit">Get Token</button>
 		
-			<label for="number">
+	
+	</form>
+</div>
+
+<div class="form-row"></div>
+	<form method="POST" action="/searchContact">
+		
+		
 				<button type="submit">Search</button>
 				<input
 					type="number"
@@ -12,14 +30,14 @@
 					placeholder="Number"
 					required
 				/>
-			</label>
+			
 		
 	</form>
 </div>
 <div class="form-row"></div>
 	<form method="POST" action="/sendMany/contacts">
 		
-			<label for="title">
+			
 				<button type="submit">Add</button>
 				<input
 					type="number"
@@ -28,19 +46,11 @@
 					placeholder="Contacts"
 					required
 				/>
-			</label>
+			
 		
 	</form>
 </div>
 
-<div class="form-row">
-	<a href="/sendOne/contacts"><button>Add a contact</button> </a>
-</div>
-<div class="form-row">
-	<a href="/all"><button>All Contacts</button> </a>
-</div>
-<div class="form-row">
-	<a href="/getToken"><button>Get Token</button> </a>
-</div>
+<a href="/all"><button>View All Contacts</button> </a>
 
 <%- include('partials/footer') %>

@@ -1,19 +1,16 @@
 const express = require("express");
 const router = express.Router();
+const jwt = require("jsonwebtoken");
 
 const users = require("../models/model");
+const verifyToken = require("../middleware/jwtverify");
 
 router.get("/", (req, res) => {
 	res.render("root");
 });
 
-router.get("/sendOne/contacts", (req, res) => {
-	res.render("sendOne");
-});
-
 router.post("/sendMany/contacts", (req, res) => {
 	let contacts = Number(req.body.contacts);
-
 	res.render("sendMany", { contacts });
 });
 
@@ -52,8 +49,9 @@ router.post("/add/user", (req, res) => {
 	});
 });
 
-router.post("/contacts", async (req, res) => {
+router.post("/searchContact", verifyToken, async (req, res) => {
 	try {
+		console.log(req.data);
 		const number = req.body.number;
 
 		const user = await users.findOne({ number });
@@ -68,7 +66,7 @@ router.post("/contacts", async (req, res) => {
 	}
 });
 
-router.get("/all", async (req, res) => {
+router.get("/all", verifyToken, async (req, res) => {
 	const resultsPerPage = 5;
 	try {
 		let page = req.query.page ? Number(req.query.page) : 1;
@@ -88,13 +86,13 @@ router.get("/all", async (req, res) => {
 			.skip(resultsPerPage * (page - 1))
 			.limit(resultsPerPage);
 
-		res.render("manyResult", { specificResult });
+		res.render("allResult", { specificResult });
 	} catch (error) {
 		console.log(error);
 	}
 });
 
-router.post("/update/user", async (req, res) => {
+router.post("/update/user", verifyToken, async (req, res) => {
 	const { fullname, number, email, body } = req.body;
 
 	try {
@@ -117,7 +115,7 @@ router.post("/update/user", async (req, res) => {
 	}
 });
 
-router.post("/delete/user", async (req, res) => {
+router.post("/delete/user", verifyToken, async (req, res) => {
 	const { fullname, number, email, body } = req.body;
 
 	try {
@@ -140,8 +138,17 @@ router.post("/delete/user", async (req, res) => {
 	}
 });
 
-// router.get("*", (req, res) => {
-// 	res.send("error 404");
+router.get("/getToken", (req, res) => {
+	const { Number } = req.body;
+	const user = { Number };
+
+	jwt.sign({ user }, process.env.JWT, function (err, token) {
+		res.send(`<label>Your Token is:<br><label>${token}</label></label>`);
+	});
+});
+
+// router.get("*", function (req, res) {
+// 	res.render("error");
 // });
 
 module.exports = router;
